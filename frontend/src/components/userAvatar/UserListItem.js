@@ -1,14 +1,8 @@
 import { Avatar } from "@chakra-ui/avatar";
 import { Box, Text } from "@chakra-ui/layout";
-import { ChatState } from "../../Context/ChatProvider";
 
-const searchdataListItem = ({ handleFunction }) => {
-  const { searchdata } = ChatState();
-  console.log(searchdata);
-  for (let i=0;i<searchdata.length;i++)
-  {
-    console.log(searchdata[i]);
-  }
+const userListItem = ({ handleFunction , user}) => {
+ 
   return (
     <Box
       onClick={handleFunction}
@@ -31,18 +25,18 @@ const searchdataListItem = ({ handleFunction }) => {
         mr={2}
         size="sm"
         cursor="pointer"
-        name={searchdata[0].name}
-        src={searchdata[0].pic}
+        name={user.name}
+        src={user.pic}
       />
       <Box>
-        <Text>{searchdata[0].name}</Text>
+        <Text>{user.name}</Text>
         <Text fontSize="xs">
           <b>Email : </b>
-          {searchdata[0].email}
+          {user.email}
         </Text>
       </Box>
     </Box>
   );
 };
 
-export default searchdataListItem;
+export default userListItem;

@@ -6,7 +6,6 @@ const ChatContext = createContext();
 const ChatProvider = ({ children }) => {
   const [selectedChat, setSelectedChat] = useState();
   const [user, setUser] = useState();
-  const [searchdata, setSearchdata] =useState();
   const [notification, setNotification] = useState([]);
   const [chats, setChats] = useState();
 
@@ -20,28 +19,6 @@ const ChatProvider = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [history]);
 
-
-
-/////////////////////////////////////////////////////////////////////////
-
-
-useEffect(() => {
-    const searchdata = JSON.parse(localStorage.getItem("searchdata"));
-    setSearchdata(searchdata);
-    console.log("test");
-    console.log(localStorage.searchdata);
-    console.log("test");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [history]);
-
-
-/////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
   return (
     <ChatContext.Provider
       value={{
@@ -49,8 +26,6 @@ useEffect(() => {
         setSelectedChat,
         user,
         setUser,
-        searchdata,
-        setSearchdata,
         notification,
         setNotification,
         chats,

@@ -62,6 +62,7 @@ function SideDrawer() {
     setChats,
   } = ChatState();
 
+
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const history = useHistory();
@@ -92,11 +93,6 @@ function SideDrawer() {
       };
 
       const { data } = await axios.get(`/api/user?search=${search}`, config);
-      //localStorage.removeItem("searchdata");
-      localStorage.setItem("searchdata", JSON.stringify(data));
-      
-      console.log(localStorage.searchdata);
-
       setLoading(false);
       setSearchResult(data);
 
