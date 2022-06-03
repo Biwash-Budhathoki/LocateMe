@@ -15,7 +15,7 @@ import ChatLoading from "../components/ChatLoading";
 import UserListItem from "../components/userAvatar/UserListItem";
 import { useToast } from "@chakra-ui/toast";
 import { Spinner } from "@chakra-ui/spinner";
-import { Input } from "@chakra-ui/input";
+//import { Input } from "@chakra-ui/input";
 import { Tooltip } from "@chakra-ui/tooltip";
 
 
@@ -113,7 +113,7 @@ const Geoloc = () => {
      return (
        <><Tooltip label="Find Nearby Users" hasArrow placement="bottom-end">
          <Button variant="ghost" onClick={onOpen}>
-           <i className="fas fa-search"></i>
+           <i className="fa fa-map-marker" aria-hidden="true"></i>
            <Text d={{ base: "none", md: "flex" }} px={4}>
              Nearby Users
            </Text>
