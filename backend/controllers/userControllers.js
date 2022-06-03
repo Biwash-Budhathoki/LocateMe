@@ -132,15 +132,16 @@ const postLocation = asyncHandler(async (req, res) => {
            $geoNear: {
             near: { type: "Point", coordinates: [parseFloat(lng),parseFloat(lat)] },
             distanceField: "dist.calculated",
-             maxDistance: 1000, spherical:true}
+             maxDistance: 1000000, spherical:true}
            
     }]);
   console.log(userdai);
-      res.json({
+     /* res.json({
          name: user[0].name,
          email: user[0].email,
          location: user[0].location,
-      });
+      });*/
+      res.send(userdai);
     };
   //console.log(foundUser); 
   //console.log(updateLocation);

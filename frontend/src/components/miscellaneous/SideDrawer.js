@@ -33,21 +33,6 @@ import UserListItem from "../userAvatar/UserListItem";
 import { ChatState } from "../../Context/ChatProvider";
 import Geoloc from "../GeolocationJS";
 
-/*function Testphase(){
-  const [search, setSearch] = useState("");
-  const [loading, setLoading] = useState(false);
-  try {
-      setLoading(true);
-
-      const config = {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      };
-      setLoading(false);
-  const { data } = await axios.get(`/api/user?search=${search}`, config);
-} */
-
 function SideDrawer() {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -94,6 +79,8 @@ function SideDrawer() {
       const { data } = await axios.get(`/api/user?search=${search}`, config);
       setLoading(false);
       setSearchResult(data);
+      console.log("setsearchdata");
+      console.log(data);
 
       //console.log(data);
     } catch (error) {
