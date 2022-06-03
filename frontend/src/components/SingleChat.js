@@ -89,7 +89,8 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           },
           config
         );
-        socket.emit("new message", data);
+        const bwas=socket.emit("new message", data);
+        console.log(bwas);
         setMessages([...messages, data]);
       } catch (error) {
         toast({

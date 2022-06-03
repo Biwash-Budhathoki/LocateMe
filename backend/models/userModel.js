@@ -17,6 +17,16 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    location: {
+    type: {
+      type: String,
+      enum: ['Point']
+    },
+    coordinates: {
+      type: [Number],
+      index: '2dsphere'
+    },
+  },
   },
   { timestaps: true }
 );
