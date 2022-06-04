@@ -15,42 +15,8 @@ const allUsers = asyncHandler(async (req, res) => {
       }
     : {};
   const users = await User.find(keyword).find({ _id: { $ne: req.user._id } });
-  //console.log(req);
   res.send(users);
 });
-
-
-
-
-/*/#################################################
-
-//@description     Get or Search all users
-//@route           GET /api/user?lat=27&lng=82
-//@access          Public
-const allUsers1 = asyncHandler(async (req, res) => {
-  const users= await User.geoNear(
-    {type:"Point",coordinates:[parseFloat(req.query.lng),parseFloat(req.query.lat)]},
-    {maxDistance: 1000, spherical:true}
-  )
-    res.send(users);
-
- // const users = await User.find(keyword).find({ _id: { $ne: req.user._id } });
-  //res.send(users);
-});
-
-
-//#################################################
-
-const allUsers = asyncHandler(async (req, res) => {
-  //const users = await User.find(keyword).find({ _id: { $ne: req.user._id } });
-  const users = await User.find({ name:{$regex: "Mausam" }});
-  console.log(users);
-  res.send(users);
-});
-*/
-//#################################################
-
-//###########################################
 
 
 //@description     Register new user
@@ -109,8 +75,6 @@ const authUser = asyncHandler(async (req, res) => {
       isAdmin: user.isAdmin,
       pic: user.pic,
       token: generateToken(user._id),
-      location:"test",
-      //location:user.location,
     });
   } else {
     res.status(401);
@@ -118,7 +82,6 @@ const authUser = asyncHandler(async (req, res) => {
   }
 });
 
-//#########################################
 //@description     Get or Search all users
 //@route           POST /api/user/location
 //@access          Public
@@ -135,17 +98,8 @@ const postLocation = asyncHandler(async (req, res) => {
              maxDistance: 1000000, spherical:true}
            
     }]);
-  console.log(userdai);
-     /* res.json({
-         name: user[0].name,
-         email: user[0].email,
-         location: user[0].location,
-      });*/
       res.send(userdai);
     };
-  //console.log(foundUser); 
-  //console.log(updateLocation);
-  console.log(user[0]._id);
 });
 
 module.exports = { allUsers, postLocation, registerUser, authUser } ;

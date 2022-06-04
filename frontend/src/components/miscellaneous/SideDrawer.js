@@ -52,9 +52,6 @@ function SideDrawer() {
     setChats,
   } = ChatState();
   const bg = useColorModeValue('white', '#2d3748');
-  //const color = useColorModeValue('white', 'gray.800');
-
-
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const history = useHistory();
@@ -86,10 +83,7 @@ function SideDrawer() {
       const { data } = await axios.get(`/api/user?search=${search}`, config);
       setLoading(false);
       setSearchResult(data);
-      console.log("setsearchdata");
-      console.log(data);
 
-      //console.log(data);
     } catch (error) {
       toast({
         title: "Error Occured!",
@@ -151,7 +145,7 @@ function SideDrawer() {
           </Button>
         </Tooltip>
         <Text fontSize="4xl" fontFamily="monospace">
-          Chatty
+          GeoFence Text
         </Text>
         <ToggleColorMode />
         <div>

@@ -1,17 +1,18 @@
 {
-  "name": "chat-app",
+  "name": "geo-chat-app",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "start": "node backend/server.js",
-    "server": "nodemon backend/server.js"
+    "server": "nodemon backend/server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=true npm install --legacy-peer-deps --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [
     "mern",
-    "chat-app"
+    "geo-chat-app"
   ],
-  "author": "Piyush Agarwal",
+  "author": "Minor Project",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

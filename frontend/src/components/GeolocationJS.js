@@ -15,7 +15,6 @@ import ChatLoading from "../components/ChatLoading";
 import UserListItem from "../components/userAvatar/UserListItem";
 import { useToast } from "@chakra-ui/toast";
 import { Spinner } from "@chakra-ui/spinner";
-//import { Input } from "@chakra-ui/input";
 import { Tooltip } from "@chakra-ui/tooltip";
 
 
@@ -24,7 +23,6 @@ const Geoloc = () => {
   const [lng, setLng] = useState(null);
   const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
-  //const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [loadingChat, setLoadingChat] = useState(false);
@@ -72,8 +70,6 @@ const Geoloc = () => {
       setStatus("Geolocation is not supported by your browser");
     } else {
       setStatus("Locating...");
-      // eslint-disable-next-line
-      //{console.log(status)};
       navigator.geolocation.getCurrentPosition(
         (position) => {
           setStatus(null);
@@ -106,10 +102,6 @@ const Geoloc = () => {
     }
     };
 
- 
-  /*  <div className="GeolocationJS">
-    <Button colorScheme='teal' size="md" onClick={getLocation}>Give Location</Button>
-    </div>*/
      return (
        <><Tooltip label="Find Nearby Users" hasArrow placement="bottom-end">
          <Button variant="ghost" onClick={onOpen}>
