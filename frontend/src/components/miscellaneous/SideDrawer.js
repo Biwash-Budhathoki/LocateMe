@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/button";
+
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Input } from "@chakra-ui/input";
 import { Box, Text } from "@chakra-ui/layout";
@@ -31,7 +31,11 @@ import { Effect } from "react-notification-badge";
 import { getSender } from "../../config/ChatLogics";
 import UserListItem from "../userAvatar/UserListItem";
 import { ChatState } from "../../Context/ChatProvider";
-import Geoloc from "../GeolocationJS";
+import Geoloc from "../GeolocationJS"; 
+import {Button} from "@chakra-ui/button";
+import ToggleColorMode from "../ToggleColorMode"
+
+
 
 function SideDrawer() {
   const [search, setSearch] = useState("");
@@ -130,8 +134,8 @@ function SideDrawer() {
         d="flex"
         justifyContent="space-between"
         alignItems="center"
-        bg="white"
         w="100%"
+        bg="gray"
         p="5px 10px 5px 10px"
         borderWidth="5px"
       ><Geoloc />
@@ -143,9 +147,10 @@ function SideDrawer() {
             </Text>
           </Button>
         </Tooltip>
-        <Text fontSize="2xl" fontFamily="Work sans">
-          Talk-A-Tive
+        <Text fontSize="4xl" fontFamily="monospace">
+          Chatty
         </Text>
+        <ToggleColorMode />
         <div>
           <Menu>
             <MenuButton p={1}>
@@ -187,6 +192,7 @@ function SideDrawer() {
               </ProfileModal>
               <MenuDivider />
               <MenuItem onClick={logoutHandler}>Logout</MenuItem>
+
             </MenuList>
           </Menu>
         </div>
@@ -224,5 +230,6 @@ function SideDrawer() {
     </>
   );
 }
+
 
 export default SideDrawer;
