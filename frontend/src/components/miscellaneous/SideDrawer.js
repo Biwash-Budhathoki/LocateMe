@@ -33,7 +33,8 @@ import UserListItem from "../userAvatar/UserListItem";
 import { ChatState } from "../../Context/ChatProvider";
 import Geoloc from "../GeolocationJS"; 
 import {Button} from "@chakra-ui/button";
-import ToggleColorMode from "../ToggleColorMode"
+import ToggleColorMode from "../ToggleColorMode";
+import {useColorModeValue} from "@chakra-ui/react";;
 
 
 
@@ -50,6 +51,8 @@ function SideDrawer() {
     chats,
     setChats,
   } = ChatState();
+  const bg = useColorModeValue('white', '#2d3748');
+  //const color = useColorModeValue('white', 'gray.800');
 
 
   const toast = useToast();
@@ -135,7 +138,7 @@ function SideDrawer() {
         justifyContent="space-between"
         alignItems="center"
         w="100%"
-        bg="gray"
+        bg={bg}
         p="5px 10px 5px 10px"
         borderWidth="5px"
       ><Geoloc />

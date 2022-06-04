@@ -2,9 +2,11 @@ import { Box } from "@chakra-ui/layout";
 import "./styles.css";
 import SingleChat from "./SingleChat";
 import { ChatState } from "../Context/ChatProvider";
+import {useColorModeValue} from "@chakra-ui/react";;
 
 const Chatbox = ({ fetchAgain, setFetchAgain }) => {
   const { selectedChat } = ChatState();
+  const bg = useColorModeValue('white', '#2d3748');
 
   return (
     <Box
@@ -12,7 +14,7 @@ const Chatbox = ({ fetchAgain, setFetchAgain }) => {
       alignItems="center"
       flexDir="column"
       p={3}
-      bg="white"
+      bg={bg}
       w={{ base: "100%", md: "68%" }}
       borderRadius="lg"
       borderWidth="1px"
