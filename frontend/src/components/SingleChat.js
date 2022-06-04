@@ -26,7 +26,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [typing, setTyping] = useState(false);
   const [istyping, setIsTyping] = useState(false);
   const toast = useToast();
-const bg = useColorModeValue('white', 'gray.800');
+const bg = useColorModeValue('white', '#2d3748');
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -242,7 +242,7 @@ const bg = useColorModeValue('white', 'gray.800');
               )}
               <Input
                 variant="filled"
-                bg="#E0E0E0"
+                bg={bg}
                 placeholder="Enter a message.."
                 value={newMessage}
                 onChange={typingHandler}

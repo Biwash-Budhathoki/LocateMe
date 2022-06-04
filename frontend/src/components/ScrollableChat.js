@@ -12,9 +12,8 @@ import {useColorModeValue} from "@chakra-ui/react";
 
 const ScrollableChat = ({ messages }) => {
   const { user } = ChatState();
-  const sendercolor = useColorModeValue('#73777b', '#0084FF');
-  const receivercolor = useColorModeValue('white', '#3E4042');
-  console.log(sendercolor,receivercolor);
+  const sendercolor = useColorModeValue('#92b4ec', '#0084FF');
+  const receivercolor = useColorModeValue('#E8E8E8', '#3E4042');
   return (
     <ScrollableFeed>
       {messages &&
@@ -36,7 +35,7 @@ const ScrollableChat = ({ messages }) => {
             <span
               style={{
                 backgroundColor: `${
-                  m.sender._id === user._id ? {receivercolor} : {sendercolor}
+                  m.sender._id === user._id ?  receivercolor : sendercolor
                 }`,
                 marginLeft: isSameSenderMargin(messages, m, i, user._id),
                 marginTop: isSameUser(messages, m, i, user._id) ? 3 : 10,

@@ -113,7 +113,7 @@ const Geoloc = () => {
      return (
        <><Tooltip label="Find Nearby Users" hasArrow placement="bottom-end">
          <Button variant="ghost" onClick={onOpen}>
-           <i className="fas fa-search"></i>
+           <i className="fas fa-map-marker"></i>
            <Text d={{ base: "none", md: "flex" }} px={4}>
              Nearby Users
            </Text>

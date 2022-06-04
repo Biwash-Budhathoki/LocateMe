@@ -34,7 +34,7 @@ import { ChatState } from "../../Context/ChatProvider";
 import Geoloc from "../GeolocationJS"; 
 import {Button} from "@chakra-ui/button";
 import ToggleColorMode from "../ToggleColorMode";
-import {useColorModeValue} from "@chakra-ui/react";;
+import {useColorModeValue} from "@chakra-ui/react";
 
 
 
@@ -181,7 +181,7 @@ function SideDrawer() {
             </MenuList>
           </Menu>
           <Menu>
-            <MenuButton as={Button} bg="white" rightIcon={<ChevronDownIcon />}>
+            <MenuButton as={Button} bg={bg} rightIcon={<ChevronDownIcon />}>
               <Avatar
                 size="sm"
                 cursor="pointer"
