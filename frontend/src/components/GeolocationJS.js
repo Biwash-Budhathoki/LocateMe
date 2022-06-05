@@ -16,6 +16,17 @@ import UserListItem from "../components/userAvatar/UserListItem";
 import { useToast } from "@chakra-ui/toast";
 import { Spinner } from "@chakra-ui/spinner";
 import { Tooltip } from "@chakra-ui/tooltip";
+import {
+  NumberInput,
+  NumberInputField,
+} from '@chakra-ui/react';
+import {
+    Slider,
+    SliderTrack,
+    SliderFilledTrack,
+    SliderThumb,
+    SliderMark,
+  } from '@chakra-ui/react';
 
 
 const Geoloc = () => {
@@ -33,7 +44,14 @@ const Geoloc = () => {
     setChats,
   } = ChatState();
   const toast = useToast();
-
+  const [value, setValue] = React.useState(500);
+  const handleChange = (value) => setValue(value);
+  const labelStyles = {
+      mt: '2',
+      ml: '-2.5',
+      fontSize: 'sm',
+    };
+    console.log(value);
 
   const accessChat = async (userId) => {
     console.log(userId);
@@ -86,11 +104,10 @@ const Geoloc = () => {
                         Authorization: `Bearer ${user.token}`,
                       },
                     };
-                    const manualDistance =100000000;
                     const { data } =  await axios.post(
                       "/api/user/location",
                       {
-                        lng,lat,time,manualDistance,
+                        lng,lat,time,value,
                       },
                       config
                     );
@@ -123,12 +140,48 @@ const Geoloc = () => {
              Nearby Users
            </Text>
          </Button>
-       </Tooltip><Drawer placement="left" onClose={onClose} isOpen={isOpen}>
+       </Tooltip>
+       
+       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
            <DrawerOverlay />
            <DrawerContent>
              <DrawerHeader borderBottomWidth="1px">LOCATE USERS</DrawerHeader>
              <DrawerBody>
-               <Box d="flex" pb={2}>
+               <Box pt={6} pb={2}>
+        <Box pb={2}>
+        <Text>Enter distance in meter.</Text>
+        <NumberInput defaultValue={value} min={1} max={25000} maxW='100px' mr='2rem' value={value} onChange={handleChange}>
+            <NumberInputField/>
+
+        </NumberInput>
+        </Box>
+        <Slider
+          defaultValue={1000}
+          min={30} 
+          max={25000} 
+          step={100}
+          aria-label='slider-ex-6'
+          value={value}
+          onChange={handleChange}>
+          <SliderMark
+            value={value}
+            textAlign='center'
+            bg='blue.500'
+            color='white'
+            mt='-10'
+            ml='-5'
+            w='12'
+            {...labelStyles}
+          >
+            {value}m
+          </SliderMark>
+          <SliderTrack>
+            <SliderFilledTrack />
+          </SliderTrack>
+          <SliderThumb />
+        </Slider>
+      </Box>
+               <Box d="flex" pb={2} pt={4} >
                  <Button colorScheme='teal' size="md" onClick={getLocation}>Find New Friends</Button>
                </Box>
                {loading ? (
