@@ -144,7 +144,7 @@ function SideDrawer() {
             </Text>
           </Button>
         </Tooltip>
-        <Text fontSize="4xl" fontFamily="monospace">
+        <Text fontSize="3xl" fontFamily="monospace">
           GeoFence Text
         </Text>
         <ToggleColorMode />
