@@ -150,7 +150,7 @@ const Geoloc = () => {
                <Box pt={6} pb={2}>
         <Box pb={2}>
         <Text>Enter distance in meter.</Text>
-        <NumberInput defaultValue={value} min={1} max={25000} maxW='100px' mr='2rem' value={value} onChange={handleChange}>
+        <NumberInput defaultValue={value} min={1} max={500} maxW='100px' mr='2rem' value={value} onChange={handleChange}>
             <NumberInputField/>
 
         </NumberInput>
@@ -158,7 +158,7 @@ const Geoloc = () => {
         <Slider
           defaultValue={1000}
           min={30} 
-          max={25000} 
+          max={500} 
           step={100}
           aria-label='slider-ex-6'
           value={value}

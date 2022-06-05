@@ -15,13 +15,7 @@ import {useColorModeValue} from "@chakra-ui/react";
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
-if (process.env.HEROKU ==="true"){
-  var ENDPOINT = "https://geofencetex.herokuapp.com";
-}
-else{
-  // eslint-disable-next-line
-  var ENDPOINT = "http://localhost:5000";
-}
+const ENDPOINT = "https://geofencetex.herokuapp.com";
 
 var socket, selectedChatCompare;
 
