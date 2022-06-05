@@ -42,20 +42,29 @@ if (process.env.NODE_ENV === "production") {
 
 // Error Handling middlewares
 app.use(notFound);
-app.use(errorHandler);
+app.use(errorHandler); 
+
+if (process.env.HEROKU ==="true"){
+  var HOST="0.0.0.0";
+  var ORGN ="https://banausaathi.herokuapp.com";
+}
+else{
+  var HOST = "127.0.0.1";
+  var ORGN ="http://localhost:3000";
+}
 
 const PORT = process.env.PORT;
 
 const server = app.listen(
   PORT,
-  "0.0.0.0",
+  HOST,
   console.log(`Server running on PORT ${PORT}...`.yellow.bold)
 );
 
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://banausaathi.herokuapp.com",
+    origin: ORGN,
     // credentials: true,
   },
 });

@@ -33,7 +33,7 @@ const Geoloc = () => {
     setChats,
   } = ChatState();
   const toast = useToast();
-  console.log(status);
+
 
   const accessChat = async (userId) => {
     console.log(userId);
@@ -62,7 +62,7 @@ const Geoloc = () => {
         position: "bottom-left",
       });
     }
-  };
+  };  
 
   // eslint-disable-next-line
   const getLocation = async () => {
@@ -70,6 +70,8 @@ const Geoloc = () => {
       setStatus("Geolocation is not supported by your browser");
     } else {
       setStatus("Locating...");
+      const time = Date.now()/1000;
+      console.log(time,status);
       navigator.geolocation.getCurrentPosition(
         (position) => {
           setStatus(null);
@@ -87,7 +89,7 @@ const Geoloc = () => {
                     const { data } =  await axios.post(
                       "/api/user/location",
                       {
-                        lng,lat
+                        lng,lat,time
                       },
                       config
                     );
@@ -101,7 +103,10 @@ const Geoloc = () => {
       
     }
     };
+    //setTimeout(getLocation, 20000);
+     
 
+    
      return (
        <><Tooltip label="Find Nearby Users" hasArrow placement="bottom-end">
          <Button variant="ghost" onClick={onOpen}>

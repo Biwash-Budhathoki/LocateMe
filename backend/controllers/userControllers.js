@@ -86,16 +86,16 @@ const authUser = asyncHandler(async (req, res) => {
 //@route           POST /api/user/location
 //@access          Public
 const postLocation = asyncHandler(async (req, res) => {
-  const { lng , lat } =req.body;
+  const { lng , lat ,time } =req.body;
   const user = await User.find({ _id : { $eq: req.user._id } });
     if (user){
-      const updateLocation = await User.updateMany({"_id":req.user._id},{$set: {"location" : { "type" : "Point", "coordinates" : [ lng, lat ] }}});
+      const updateLocation = await User.updateMany({"_id":req.user._id},{$set: {"location" : { "type" : "Point", "coordinates" : [ lng, lat ] }}, "updatetimeStamp" : time });
        const userdai= await User.aggregate([
          {
            $geoNear: {
             near: { type: "Point", coordinates: [parseFloat(lng),parseFloat(lat)] },
             distanceField: "dist.calculated",
-             maxDistance: 1000000, spherical:true}
+             maxDistance: 1000, spherical:true}
            
     }]);
       res.send(userdai);

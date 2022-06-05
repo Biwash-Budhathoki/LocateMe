@@ -15,7 +15,14 @@ import {useColorModeValue} from "@chakra-ui/react";
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
-const ENDPOINT = "https://banausaathi.herokuapp.com";
+if (process.env.HEROKU ==="true"){
+  var ENDPOINT = "https://banausaathi.herokuapp.com";
+}
+else{
+  // eslint-disable-next-line
+  var ENDPOINT = "http://localhost:5000";
+}
+
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -27,6 +34,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [istyping, setIsTyping] = useState(false);
   const toast = useToast();
 const bg = useColorModeValue('white', '#2d3748');
+const bg1 = useColorModeValue('white', 'black');
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -242,7 +250,7 @@ const bg = useColorModeValue('white', '#2d3748');
               )}
               <Input
                 variant="filled"
-                bg={bg}
+                bg={bg1}
                 placeholder="Enter a message.."
                 value={newMessage}
                 onChange={typingHandler}

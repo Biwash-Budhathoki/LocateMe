@@ -17,6 +17,9 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    updatetimeStamp: {
+      type: Number,
+    },
     location: {
     type: {
       type: String,
