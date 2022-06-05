@@ -46,7 +46,7 @@ app.use(errorHandler);
 
 if (process.env.HEROKU ==="true"){
   var HOST="0.0.0.0";
-  var ORGN ="https://banausaathi.herokuapp.com";
+  var ORGN ="https://geofencetex.herokuapp.com";
 }
 else{
   var HOST = "127.0.0.1";

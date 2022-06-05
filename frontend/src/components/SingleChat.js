@@ -16,7 +16,7 @@ import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
 if (process.env.HEROKU ==="true"){
-  var ENDPOINT = "https://banausaathi.herokuapp.com";
+  var ENDPOINT = "https://geofencetex.herokuapp.com";
 }
 else{
   // eslint-disable-next-line
