@@ -45,12 +45,13 @@ app.use(notFound);
 app.use(errorHandler); 
 
 if (process.env.HEROKU ==="true"){
-  var HOST="0.0.0.0";
-  var ORGN ="https://geofencetex.herokuapp.com";
+      var HOST="0.0.0.0";
+     var ORGN ="https://geofencetex.herokuapp.com";
+
 }
 else{
-  var HOST = "127.0.0.1";
-  var ORGN ="http://localhost:3000";
+     var HOST = "127.0.0.1";
+     var ORGN ="http://localhost:3000";
 }
 
 const PORT = process.env.PORT;
