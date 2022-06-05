@@ -86,19 +86,27 @@ const authUser = asyncHandler(async (req, res) => {
 //@route           POST /api/user/location
 //@access          Public
 const postLocation = asyncHandler(async (req, res) => {
-  const { lng , lat ,time } =req.body;
+  const { lng , lat , time , manualDistance } =req.body;
   const user = await User.find({ _id : { $eq: req.user._id } });
+  const timestamp = user[0].updatetimeStamp;
     if (user){
       const updateLocation = await User.updateMany({"_id":req.user._id},{$set: {"location" : { "type" : "Point", "coordinates" : [ lng, lat ] }}, "updatetimeStamp" : time });
-       const userdai= await User.aggregate([
-         {
-           $geoNear: {
-            near: { type: "Point", coordinates: [parseFloat(lng),parseFloat(lat)] },
-            distanceField: "dist.calculated",
-             maxDistance: 1000, spherical:true}
-           
-    }]);
+      if (((time-timestamp)/60)<5){
+
+        const userdai= await User.aggregate([
+          {
+            $geoNear: {
+              near: { type: "Point", coordinates: [parseFloat(lng),parseFloat(lat)] },
+              distanceField: "dist.calculated",
+              maxDistance: manualDistance, spherical:true}
+            
+          }]);
       res.send(userdai);
+     }
+     else{
+        res.status(404);
+        throw new Error("NO Users Found Nearby");
+     }
     };
 });
 

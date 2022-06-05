@@ -86,10 +86,11 @@ const Geoloc = () => {
                         Authorization: `Bearer ${user.token}`,
                       },
                     };
+                    const manualDistance =100000000;
                     const { data } =  await axios.post(
                       "/api/user/location",
                       {
-                        lng,lat,time
+                        lng,lat,time,manualDistance,
                       },
                       config
                     );
@@ -97,7 +98,14 @@ const Geoloc = () => {
                     setSearchResult(data);
                     console.log(data);
                           }catch (error) {
-                    console.log("errorrrr");
+                            toast({
+                              title: "No Users Found Nearby",
+                              description: "Please try again later !!!",
+                              status: "error",
+                              duration: 5000,
+                              isClosable: true,
+                              position: "bottom-left",
+                            });
                   };
         
       

@@ -12,8 +12,8 @@ import {useColorModeValue} from "@chakra-ui/react";
 
 const ScrollableChat = ({ messages }) => {
   const { user } = ChatState();
-  const sendercolor = useColorModeValue('#92b4ec', '#0084FF');
-  const receivercolor = useColorModeValue('#E8E8E8', '#3E4042');
+  const receivercolor = useColorModeValue('#92b4ec', '#0084FF');
+  const sendercolor = useColorModeValue('#E8E8E8', '#3E4042');
   return (
     <ScrollableFeed>
       {messages &&
